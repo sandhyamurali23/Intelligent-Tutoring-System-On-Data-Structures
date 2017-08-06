@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en" oncontextmenu="return false"  onselectstart='return false;'>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+      <title>ITS</title>
+      <!-- CSS  -->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <!-- CORE CSS-->
+      <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+      <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+      <script src="libs/jquery-loader.js"></script>
+      <!-- Load local QUnit -->
+      <link rel="stylesheet" href="libs/qunit/qunit/qunit.css" media="screen">
+      <!-- Remove for center alignment 
+      <link href="css/page-center.css" type="text/css" rel="stylesheet" media="screen,projection">-->
+      <!-- Remove for center alignment -->
+      <script src="libs/qunit/qunit/qunit.js"></script>
+      <!-- Load local lib and tests -->
+      <link rel="stylesheet" href="src/remodal.css">
+      <link rel="stylesheet" href="src/remodal-default-theme.css">
+      <script src="dist/sweetalert2.min.js"></script> 
+      <link rel="stylesheet" type="text/css" href="dist/sweetalert2.css">
+      <script src="src/remodal.js"></script>
+      <script src="remodal_test.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+      <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+      <style>
+         .remodal-overlay.without-animation.remodal-is-opening,
+         .remodal-overlay.without-animation.remodal-is-closing,
+         .remodal.without-animation.remodal-is-opening,
+         .remodal.without-animation.remodal-is-closing,
+         .remodal-bg.without-animation.remodal-is-opening,
+         .remodal-bg.without-animation.remodal-is-closing {
+         animation: none;
+         }
+      </style>
+      <style>
+         body {
+         background-image: url("images/pattern_s.png");
+         background-repeat: repeat;
+         }
+      </style>
+      <script>
+         var currentUser =  Parse.User.current(); 
+            currentUser.fetch.then(function(fetchedUser)
+          {
+                var name = fetchedUser.getUsername();
+            });
+             
+      </script>
+      <script>
+         Parse.initialize("1OafvqCOdXbhImCWLtLzi7oEWfhjQaiTkpbiAUlJ", "9TJungoyNdtFYBbF83p6884YgnXoQah3Y8z8QJwB");
+         
+         var currentUser =  Parse.User.current(); 
+         
+         var errorCount = 0; 
+         var sourceCodeCount = 0; 
+          
+         var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, correct = 0;     
+         var attempt1 = 0;
+         var attempt2 = 0;
+         var attempt3 = 0;
+         var attempt4 = 0;
+         var attempt5 = 0;
+         var attempt6 = 0;
+         var attempt7 = 0;
+         var attempt8 = 0;
+          
+        var ans1 = "";
+        var ans2 = "";
+        var ans3 = "";
+        var ans4 = "";
+        var ans5 = "";
+        var ans6 = "";
+        var ans7 = "";
+        var ans8 = "";
+         
+         var questions = [
+         [ "Which of the following has a Time Complexity of O(logn)?", "Array", "Linked List", "Binary Tree", "C" ],
+         [ "Inserting an item into the stack when stack is not full is called ..... Operation and deletion of item form the stack, when stack is not empty is called ……… operation","Push,Pop","Pop,Push","Insert,Delete","A"],
+         ["Finding the location of the element with a given value is:","Traversal","Search","Sort","B"],
+         ["Which of the following points is true about Linked List data structure when it is compared with array ?","It is difficult to insert and delete elements in Linked List","Random access is allowed in a typical implementation of Linked Lists","The size of array has to be pre-decided, linked lists can change their size any time","C"],
+         [ "You need to pack your bag to go on a vacation.To remove The clothes kept at the  bottom of the bag, you first need to remove all the clothes on the top. And similarly, to put the clothes back in, you first put the clothes which were last removed from the clothes stash. Which data structure would be best used to store the clothes in the bag ?", "Array", "Queue", "Stack", "C" ],
+         [ "Given a Bank which has a thousands of customer records and wants to build an online service for its customers to check the account details online.The requirement of the online service is that the customer should get the response quickly once the request is given.Give an efficient solution for the above states requirement.", "Array", "Hash", "Binary Search Tree", "B" ],
+         ["At a supermarket there are a variety of things like groceries, household items,meat etc. Which data structure should all the information be stored in by the supermarket, if they want to keep an intricate tab of each and every the item that they sell. If we consider groceries, it gets classifies further into dairy, fruits, vegetables and further into milk, cheese, cabbage, potatoes, onions etc.","Linked List","Tree","Graphs","B"],
+         [ "The local auto parts stores sells, oil, filters, brakes, batteries and parts for hundreds of car models.He wants to have a software developer create an inventory control program that tracks all the parts and projects how many of the parts need to have on hand so there is minimal risk you will ever be caught out of stock. Each night the program creates report of the parts whose quantity is below certain value, so that they can be ordered to bring the stock levels back up to the right number.", "Array", "Circular Queue", "Stack", "B" ]
+         ];
+         function _(x)
+         {
+         
+         return document.getElementById(x);
+         }
+         
+         function checkAnswer()
+         {    
+               loadImages();
+         choices = document.getElementsByName("group1");
+         for(var i=0; i<choices.length; i++){
+         	if(choices[i].checked){
+         		choice = choices[i].value;
+         	}
+         }
+         
+         
+         if(document.getElementById("demo").innerHTML == questions[0][0])
+         
+         {
+         
+         if(choice == questions[pos][4]){
+           
+         $('#modal1').openModal();	
+         
+         }
+         else   if(document.getElementById("test2").checked==true)
+         {
+         	$('#modal1').openModal();
+         }
+         else  if(document.getElementById("test1").checked==true)
+         {
+           $('#modal1').openModal();
+         }
+         else  if(document.getElementById("test3").checked==true)
+         {
+           $('#modal1').openModal();
+         }     
+         else
+         {
+            $('#modal4').openModal();
+         }
+         
+         }
+         
+         
+         if(document.getElementById("demo").innerHTML == questions[1][0])
+         
+         {
+         
+         if(choice == questions[pos][4]){
+           
+         $('#modal1').openModal();	
+         
+         }
+         else   if(document.getElementById("test2").checked==true)
+         {
+         	$('#modal1').openModal();
+         }
+         else  if(document.getElementById("test1").checked==true)
+         {
+           $('#modal1').openModal();
+         }
+         else  if(document.getElementById("test3").checked==true)
+         {
+           $('#modal1').openModal();
+         } 
+         else
+         {
+            $('#modal4').openModal();
+         }
+         
+         }
+         
+         
+         if(document.getElementById("demo").innerHTML == questions[2][0])
+         
+         {
+         
+         if(choice == questions[pos][4]){
+           
+         $('#modal1').openModal();	
+         
+         }
+         else   if(document.getElementById("test2").checked==true)
+         {
+         	$('#modal1').openModal();
+         }
+         else  if(document.getElementById("test1").checked==true)
+         {
+           $('#modal1').openModal();
+         }
+         else  if(document.getElementById("test3").checked==true)
+         {
+           $('#modal1').openModal();
+         } 
+         else
+         {
+            $('#modal4').openModal();
+         }
+         
+         }
+         
+         
+         if(document.getElementById("demo").innerHTML == questions[3][0])
+         
+         {
+         
+         if(choice == questions[pos][4]){
+           
+         $('#modal1').openModal();	
+         
+         }
+         else   if(document.getElementById("test2").checked==true)
+         {
+         	$('#modal1').openModal();
+         }
+         else  if(document.getElementById("test1").checked==true)
+         {
+           $('#modal1').openModal();
+         }
+         else  if(document.getElementById("test3").checked==true)
+         {
+           $('#modal1').openModal();
+         } 
+         else
+         {
+            $('#modal4').openModal();
+         }
+         
+         }
+         
+         if(document.getElementById("demo").innerHTML == questions[4][0])
+         
+         {
+         
+         if(choice == questions[pos][4]){
+           
+         $('#modal1').openModal();	
+         
+         }
+         else   if(document.getElementById("test2").checked==true)
+         {
+         	$('#modal1').openModal();
+         }
+         else  if(document.getElementById("test1").checked==true)
+         {
+           $('#modal1').openModal();
+         }
+         else  if(document.getElementById("test3").checked==true)
+         {
+           $('#modal1').openModal();
+         } 
+         else
+         {
+            $('#modal4').openModal();
+         }
+         
+         }
+         
+         if(document.getElementById("demo").innerHTML == questions[5][0])
+         
+         {
+         
+         if(choice == questions[pos][4]){
+           
+         $('#modal1').openModal();	
+         
+         }
+         else   if(document.getElementById("test2").checked==true)
+         {
+         	$('#modal1').openModal();
+         }
+         else  if(document.getElementById("test1").checked==true)
+         {
+           $('#modal1').openModal();
+         }
+         else  if(document.getElementById("test3").checked==true)
+         {
+           $('#modal1').openModal();
+         } 
+         else
+         {
+            $('#modal4').openModal();
+         }
+         
+         }
+         
+         
+         if(document.getElementById("demo").innerHTML == questions[6][0])
+         
+         {
+         
+         if(choice == questions[pos][4]){
+           
+         $('#modal1').openModal();	
+         
+         }
+         else   if(document.getElementById("test2").checked==true)
+         {
+         	$('#modal1').openModal();
+         }
+         else  if(document.getElementById("test1").checked==true)
+         {
+           $('#modal1').openModal();
+         }
+         else  if(document.getElementById("test3").checked==true)
+         {
+           $('#modal1').openModal();
+         } 
+         else
+         {
+            $('#modal4').openModal();
+         }
+         
+         }
+         
+         
+         if(document.getElementById("demo").innerHTML == questions[7][0])
+         
+         {
+         
+         if(choice == questions[pos][4]){
+           
+         $('#modal1').openModal();	
+         
+         }
+         else   if(document.getElementById("test2").checked==true)
+         {
+         	$('#modal1').openModal();
+         }
+         else  if(document.getElementById("test1").checked==true)
+         {
+           $('#modal1').openModal();
+         }
+         else  if(document.getElementById("test3").checked==true)
+         {
+           $('#modal1').openModal();
+         } 
+         else
+         {
+            $('#modal4').openModal();
+         }
+         
+         }
+         
+         	
+         }
+         
+         window.addEventListener("load", renderQuestion, false);
+      </script>
+       
+     
+       
+   </head>
+    
+   <body>
+       
+       <noscript><style>#no-js{background:red; height: 38px; color:white; font-size: 14pt; text-align: center; font-family: 'Roboto', sans-serif; line-height: 28pt}</style><div id="no-js">Please enable JavaScript in your browser</div></noscript>
+       
+       <ul id="dropdown1" class="dropdown-content">
+            <form class="form-logout" role="form">
+  <li><a id="reset" href="#!"></a></li>
+          
+  <li><a href="index.html" onclick='return logoutMe()' >Logout</button></li>
+           </form>
+           
+        
+  
+</ul>
+       
+       <nav>
+    <div class="nav-wrapper blue-grey">
+      <a href="#!" class="brand-logo"></a>
+      <ul class="right hide-on-med-and-down">
+        <li ><a id="people" class="dropdown-button" href="#!" data-activates="dropdown1"><i id="icon" class="material-icons left">perm_identity</i></a></li>
+      </ul>
+    </div>
+  </nav>
+       
+       <script>
+       function myFunction()
+           {    
+               var x = document.myForm
+               var roll = x.rollnumber.value
+               var ico = '<i id="icon" class="material-icons left">perm_identity</i>'
+               document.getElementById("people").innerHTML = ico + roll;
+               document.getElementById("reset").innerHTML = "Hello " + roll;
+               
+               
+               
+           }
+       </script>
+      <!--     <nav class="light-blue lighten-1" role="navigation">
+         <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo"></a>
+            <ul class="right hide-on-med-and-down">
+               <li><form class="form-logout" role="form">
+         <input type="submit" value="Logout" id="logout" class="btn btn-primary btn-lg">
+         </form></li>
+            </ul>
+            <ul id="nav-mobile" class="side-nav">
+               <li><a href="#">Navbar Link</a></li>
+            </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+         </div>
+         </nav> -->
+      <div class="container">
+         <div id="page_1" style="visibility: visible; display: block">
+            <div class="col s2 z-depth-4 card-panel">
+               <form id="myForm" name="myForm" role="form">
+                    <blockquote id="block" hidden="true">
+      Write your Roll Number in the format <b>112A1008</b>.
+    </blockquote>
+                  <div class="row margin">
+                     <div class="input-field col s12">
+                        <input id="rollnumber" name="rollnumber" type="text">
+                        <label for="rollnumber">Roll Number</label>
+                     </div>
+                  </div>
+                  <div class="row margin">
+                     <div class="input-field col s6">
+                        <input id="number" type="text" name="number" required hidden="true">
+                        <label for="number">Name</label>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="input-field col s2">
+                        <button id="rollSubmit" type="submit" name="action" class="btn waves-effect waves-light col teal s12" onclick="validateForm()   ;" disabled>Submit<i class="material-icons right">send</i></button>
+                     </div>
+                  </div>
+                   
+               </form>
+            </div>
+         </div>
+      </div>
+      <div class="section no-pad-bot" id="index-banner">
+         <div class="container">
+            <div id="page_2" style="visibility: hidden; display: block">
+               <div class="card small">
+                  <form action="#">
+                     <div class="card-content">
+                        <span class="card-title" id="count"></span>
+                        <div id="content">
+                           <p id="demo">
+                           </p>
+                           <br>
+                           <p>
+                              <input name="group1" type="radio" id="test1" value='A' />
+                              <label for="test1" id="q1"></label>
+                           </p>
+                           <p>
+                              <input name="group1" type="radio" id="test2" value='B' />
+                              <label for="test2" id="q2"></label>
+                           </p>
+                           <p>
+                              <input name="group1" type="radio" id="test3" value='C'  />
+                              <label for="test3" id="q3"></label>
+                           </p>
+                           <p>
+                              <input type="hidden" id="counter" name="count" value="" readonly="readonly" />
+                              <label for="counter" id="q4"></label>
+                           </p>
+                        </div>
+                        <div class="card-action" id="card-action">
+                           <a href="#" id="cardSubmit" onclick="return checkAnswer();" disabled>SUBMIT</a>                         
+                        </div>
+                        <script>
+                           var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, correct = 0;
+                           var questions = [
+                           [ "Which of the follwing has a Time Complexity of O(logn)?", "Array", "Linked List", "Binary Tree", "C" ],
+                           [ "Inserting an item into the stack when stack is not full is called ..... Operation and deletion of item form the stack, when stack is not empty is called ……… operation","Push,Pop","Pop,Push","Insert,Delete","A"],
+                           ["Finding the location of the element with a given value is:","Traversal","Search","Sort","B"],
+                           ["Which of the following points is true about Linked List data structure when it is compared with array ?","It is difficult to insert and delete elements in Linked List","Random access is allowed in a typical implementation of Linked Lists","The size of array has to be pre-decided, linked lists can change their size any time","C"],
+                           [ "You need to pack your bag to go on a vacation.To remove The clothes kept at the  bottom of the bag, you first need to remove all the clothes on the top. And similarly, to put the clothes back in, you first put the clothes which were last removed from the clothes stash. Which data structure would be best used to store the clothes in the bag ?", "Array", "Queue", "Stack", "C" ],
+                           [ "Given a Bank which has a thousands of customer records and wants to build an online service for its customers to check the account details online.The requirement of the online service is that the customer should get the response quickly once the request is given.Give an efficient solution for the above states requirement.", "Array", "Hash", "Binary Search Tree", "B" ],
+                           ["At a supermarket there are a variety of things like groceries, household items,meat etc. Which data structure should all the information be stored in by the supermarket, if they want to keep an intricate tab of each and every the item that they sell. If we consider groceries, it gets classifies further into dairy, fruits, vegetables and further into milk, cheese, cabbage, potatoes, onions etc.","Linked List","Tree","Graphs","B"],
+                           [ "The local auto parts stores sells, oil, filters, brakes, batteries and parts for hundreds of car models.He wants to have a software developer create an inventory control program that tracks all the parts and projects how many of the parts need to have on hand so there is minimal risk you will ever be caught out of stock. Each night the program creates report of the parts whose quantity is below certain value, so that they can be ordered to bring the stock levels back up to the right number.", "Array", "Circular Queue", "Stack", "B" ]
+                           ];
+                           
+                           document.getElementById("count").innerHTML = "Question "+(pos+1)+" of "+questions.length;
+                           document.getElementById("demo").innerHTML = questions[pos][0];
+                           document.getElementById("q1").innerHTML = questions[pos][1];
+                           document.getElementById("q2").innerHTML = questions[pos][2];
+                           document.getElementById("q3").innerHTML = questions[pos][3];
+                           
+                           function dispAns()
+                           {
+                               //alert("Start");
+                               
+                               
+                             if(pos >= questions.length){
+                                 saveAttempts();
+                           _("count").innerHTML = "Test Completed";
+                           _("content").innerHTML = "";
+                           _("card-action").innerHTML = '';   
+                           pos = 0;
+                           correct = 0;
+                           return false;
+                           }
+                               
+                           document.getElementById("count").innerHTML = "Question "+(pos+1)+" of "+questions.length;                            
+                           document.getElementById("demo").innerHTML = questions[pos][0];
+                           document.getElementById("q1").innerHTML = questions[pos][1];
+                           document.getElementById("q2").innerHTML = questions[pos][2];
+                           document.getElementById("q3").innerHTML = questions[pos][3];
+                           
+                           //alert("End");    
+                               
+                           }
+                           
+                           
+                           
+                           
+                           
+                        </script>
+                     </div>
+                  </form>
+               </div>
+               
+            </div>
+         </div>
+      </div>
+      <br><br>
+      <div class="section">
+      </div>
+      </div>
+      
+      <!-- trial-->
+      <!-- Answer Verify Modal Structure -->
+      <div id="modal1" class="modal modal-fixed-footer">
+         
+         <div class="modal-content">
+             <blockquote><b>Click on the image to view it in fullscreen.</b></blockquote>
+            <div class="col s12">
+               <img class="materialboxed" width="745" height="325" id="gif" src="">
+            </div>
+            <div class="col s12 center">
+               <h5>Do you think your answer is optimal?</h5>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">Cancel</a>
+            <button onclick="openModal2();" class="modal-action modal-close waves-effect waves-green btn-flat modal-trigger">Confirm</button>
+         </div>
+      </div>
+      <!-- Answer Justfication Modal Structure -->
+      <div id="modal2" class="modal">
+          <form id="ansForm" name="ansForm">
+          <div class="modal-content">
+      <h4>Correct Answer!</h4>
+      <div class="col s12">
+        <input id="field1" type="text" placeholder="Can you justify your answer?">
+          
+    </div>
+    </div>
+    <div class="modal-footer">
+      <button onclick="loadNext();" class=" waves-effect waves-green btn-flat">Okay</a>
+    </div>
+          </form>
+          
+    
+  </div>
+      <!-- Alert Modal Structure -->
+      <div id="modal3" class="modal modal-fixed-footer" style="height: 200px;">
+         <div class="modal-content">
+            <h4>Wrong Answer</h4>
+            <p>Your answer is wrong. Try again!</p>
+         </div>
+         <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Okay</a>
+         </div>
+      </div>
+    
+    <!-- Error Modal Structure -->
+      <div id="modal4" class="modal modal-fixed-footer" style="height: 200px;">
+         <div class="modal-content">
+            <h4>Error</h4>
+            <p>You need to choose an option!</p>
+         </div>
+         <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Okay</a>
+         </div>
+      </div>
+    
+    <!-- Logout Modal-->
+    
+
+  <!-- Modal Structure -->
+  <div id="modal5" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Are you sure you want to Logout?</h4>
+      <p>Your progress will be lost!</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Logout</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
+    </div>
+  </div>
+    
+      <!-- End Trial -->
+      <!--  Scripts-->
+      <script type="text/javascript">
+          function logoutMe()
+          {
+         $('.form-logout').on('submit', function (e) {
+           // Prevent Default Submit Event
+           e.preventDefault();
+         
+           console.log("Performing submit");
+         
+           //logout current user
+           if ( Parse.User.current() ) {
+               Parse.User.logOut();
+         
+               // check if really logged out
+               if (Parse.User.current())
+                   console.log("Failed to log out!");
+           }
+         
+           // do redirect
+           //window.location.replace("Sign_In.html");
+           // or
+           window.location.href = "index.html";
+         });
+         }
+      </script>
+      <script type = "text/javascript">
+         function logout()
+         {
+             Parse.User.logOut();
+         
+         var currentUser = Parse.User.current();  
+              window.location = "index.html";
+         }
+           
+            
+      </script>
+      <script>
+         function dispAlert()
+             {   
+                 var roll = $('#rollnumber').val();
+                 //sweetAlert("Hey", "Your Roll No. is: " +roll);
+                 var TestObject = Parse.Object.extend("Attempts");
+                 var testObject = new TestObject();
+                 testObject.save({user: roll});
+             }
+              
+              function dispDetails()
+             {   
+                 var roll = $('#rollnumber').val();
+                 sweetAlert("Hey", "Your Roll No. is: " +roll);
+                 //testObject.save({user: roll}, {});
+             }
+             
+      </script>
+      <script>
+         function validateForm() {
+             
+        
+            
+        var x = document.myForm
+        var input = x.rollnumber.value
+         
+         if(( document.forms["myForm"]["rollnumber"].value==null) ||( document.forms["myForm"]["rollnumber"].value==""))
+         {
+         Materialize.toast('Field cannot be left empty', 4000)
+              return false;
+         }
+            
+        else if(input.length<8 || input.length>8)
+            {
+               errorCount++;
+               Materialize.toast('Invalid Roll Number', 4000) //Validates the length of the roll number to be 8 characters only
+               if (errorCount > 2)
+                   {
+                      document.getElementById('block').hidden = false; 
+                   }
+            }
+        
+        else if(/[^a-bA-B0-9\-\/]/.test(input)) //Validates only characters in string
+            {   
+               errorCount++;
+               Materialize.toast('Invalid Roll Number', 4000)
+               if (errorCount > 2)
+                   {
+                      document.getElementById('block').hidden = false; 
+                   }
+            }
+             
+        else if(input.charAt(3) != "A" ) //Validates the 4th Character is a letter ie: "112A1008
+            {   
+               errorCount++;
+               Materialize.toast('Invalid Roll Number', 4000) 
+               if (errorCount > 2)
+                   {
+                      document.getElementById('block').hidden = false; 
+                   }
+            }
+             
+        else if(/[^1-6\-\/]/.test(input.charAt(4))) //Validates Branch of student. 1 is for CE
+            {
+                errorCount++;
+               Materialize.toast('Invalid Branch Code', 4000)
+               if (errorCount > 2)
+                   {
+                      document.getElementById('block').hidden = false; 
+                   }
+               
+            }
+             
+        else if(/[^1-4\-\/]/.test(input.charAt(2))) //Validates the year of the student
+            {
+                errorCount++;
+               Materialize.toast('Invalid Year Code', 4000)
+               if (errorCount > 2)
+                   {
+                      document.getElementById('block').hidden = false; 
+                   }
+            }
+             
+        else if (input.charAt(0) != 1 || input.charAt(1) != 1)
+            {
+                errorCount++;
+                Materialize.toast('Invalid Roll Number', 4000) //Validates first two numbers to be only "1" 
+                if (errorCount > 2)
+                   {
+                      document.getElementById('block').hidden = false; 
+                   }
+            }
+         
+         else
+         {
+             myFunction();
+         pagechange(1, 2);
+         }
+         
+         
+         
+         
+         }
+          
+          
+          function pagechange(frompage, topage) {
+         var page=document.getElementById('page_'+frompage);
+         if (!page) return false;
+         page.style.visibility='hidden';
+         page.style.display='none';
+         
+         page=document.getElementById('page_'+topage);
+         if (!page) return false;
+         page.style.display='block';
+         page.style.visibility='visible';
+         
+         return true;
+         }
+          
+          
+      </script>
+      <script>
+         //Loads next question
+         function loadNext()
+         {  
+             
+             var x = document.forms["ansForm"]["field1"].value;
+             
+             if (x == null || x == "") {
+                Materialize.toast('Please fill the text field', 4000)
+                return false;
+             }
+             
+             else
+                 {
+                     $('#modal2').closeModal();
+                     correct++;
+             pos++;
+             updateAttempts();
+             
+             dispAns();
+             document.getElementById("field1").value = ""
+             document.getElementById("test1").checked = false;
+             document.getElementById("test2").checked = false;
+             document.getElementById("test3").checked = false;
+             
+                 }
+             
+               
+         }
+          
+         //Update Attempts
+          function updateAttempts()
+          {
+              var demo = document.getElementById("demo");
+              var TestObject = Parse.Object.extend("Attempts");
+              var testObject = new TestObject();
+              
+             
+             if (demo.innerHTML == questions[0][0])
+                 {  
+                     attempt1++;
+                     ans1 = document.getElementById("field1").value;
+                     
+                 }
+              
+              //Q2
+              if (demo.innerHTML == questions[1][0])
+                 {
+                     attempt2++;
+                     ans2 = document.getElementById("field1").value;
+                     //testObject.save({Q2: attempt2});
+                 }
+              
+              //Q3
+              if (demo.innerHTML == questions[2][0])
+                 {
+                     attempt3++;
+                     ans3 = document.getElementById("field1").value;
+                     //testObject.save({Q3: attempt3});
+                 }
+              
+              //Q4
+              if (demo.innerHTML == questions[3][0])
+                 {
+                     attempt4++;
+                     ans4 = document.getElementById("field1").value;
+                     //testObject.save({Q4: attempt4});
+                 }
+              
+              //Q5
+              if (demo.innerHTML == questions[4][0])
+                 {
+                     attempt5++;
+                     ans5 = document.getElementById("field1").value;
+                     //testObject.save({Q5: attempt5});
+                 }
+              
+              //Q6
+              if (demo.innerHTML == questions[5][0])
+                 {
+                     attempt6++;
+                     ans6 = document.getElementById("field1").value;
+                     //testObject.save({Q6: attempt6});
+                 }
+              
+              //Q7
+              if (demo.innerHTML == questions[6][0])
+                 {
+                     attempt7++;
+                     ans7 = document.getElementById("field1").value;
+                     //testObject.save({Q7: attempt7});
+                 }
+              
+              //Q8
+              if (demo.innerHTML == questions[7][0])
+                 {
+                     attempt8++;
+                     ans8 = document.getElementById("field1").value;
+                     //testObject.save({Q8: attempt8});
+                 }
+          }
+          
+          function trial()
+          {
+              
+          }
+        
+          //Save attempts to Parse
+          function saveAttempts()
+          {
+              var TestObject = Parse.Object.extend("Attempts");
+              var testObject = new TestObject();
+              attempt1--;
+              attempt2--;
+              attempt3--;
+              attempt4--;
+              attempt5--;
+              attempt6--;
+              attempt7--;
+              attempt8--;
+              
+              
+              //alert("Attempt 1 is: " +attempt1);
+              //alert("Attempt 2 is: " +attempt2);
+              //alert("Attempt 3 is: " +attempt3);
+              
+              testObject.save({Q1: attempt1});
+              testObject.save({Q2: attempt2});
+              testObject.save({Q3: attempt3});
+              testObject.save({Q4: attempt4});
+              testObject.save({Q5: attempt5});
+              testObject.save({Q6: attempt6});
+              testObject.save({Q7: attempt7});
+              testObject.save({Q8: attempt8});
+              
+              testObject.save({A1: ans1});
+              testObject.save({A2: ans2});
+              testObject.save({A3: ans3});
+              testObject.save({A4: ans4});
+              testObject.save({A5: ans5});
+              testObject.save({A6: ans6});
+              testObject.save({A7: ans7});
+              testObject.save({A8: ans8});
+              
+              var roll = $('#rollnumber').val();
+              testObject.save({user: roll});
+              
+          }
+         
+         //Opens verification Modal
+         function openModal2()
+         {
+           if(choice == questions[pos][4])
+               {   
+                   $('#modal2').openModal();
+                   updateAttempts();
+                 
+               }
+             else
+             { 
+                 $('#modal3').openModal();
+                 updateAttempts();
+             }
+         
+         }
+         
+         //Loads images in Modal
+         function loadImages()
+         {     
+             
+             var qArray = new Array();
+             
+             //Question 1
+               qArray[0] = {image:"images/question2a.gif"};
+               qArray[1] = {image:"images/question2b.gif"};
+               qArray[2] = {image:"images/question2c.gif"};
+               
+             //Question 2
+               qArray[3] = {image:"images/question7a.gif"};
+               qArray[4] = {image:"images/question7b.gif"};
+               qArray[5] = {image:"images/question7c.gif"};
+             
+             //Question 3
+               qArray[6] = {image:"images/question8a.gif"};
+               qArray[7] = {image:"images/question8b.gif"};
+               qArray[8] = {image:"images/question8c.gif"};
+             
+             //Question 4
+               qArray[9] = {image:"images/question5a.gif"};
+               qArray[10] = {image:"images/question5b.gif"};
+               qArray[11] = {image:"images/question5c.gif"};
+             
+             //Question 5
+               qArray[12] = {image:"images/question3a.gif"};
+               qArray[13] = {image:"images/question3b.gif"};
+               qArray[14] = {image:"images/question3c.gif"};
+             
+             //Question 6
+               qArray[15] = {image:"images/1.gif"};
+               qArray[16] = {image:"images/3.gif"};
+               qArray[17] = {image:"images/2.gif"};
+             
+             //Question 7
+               qArray[18] = {image:"images/question6a.gif"};
+               qArray[19] = {image:"images/question6b.gif"};
+               qArray[20] = {image:"images/question6c.gif"};
+             
+             //Question 8
+               qArray[21] = {image:"images/question4a.gif"};
+               qArray[22] = {image:"images/question4b.gif"};
+               qArray[23] = {image:"images/question4c.gif"};
+             
+             var ansImg = qArray[count];
+               
+             if(document.getElementById("demo").innerHTML == questions[0][0])
+                 
+               {
+               
+                   if (document.getElementById("test1").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[0].image;
+                 }
+             if (document.getElementById("test2").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[1].image;
+                 }
+             if (document.getElementById("test3").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[2].image;
+                 }
+                   
+                   
+               }
+             
+             
+             if(document.getElementById("demo").innerHTML == questions[1][0])
+                 
+               {
+               
+                   if (document.getElementById("test1").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[3].image;
+                 }
+             if (document.getElementById("test2").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[4].image;
+                 }
+             if (document.getElementById("test3").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[5].image;
+                 }
+                   
+               }
+             
+             
+             if(document.getElementById("demo").innerHTML == questions[2][0])
+                 
+               {
+               
+                   if (document.getElementById("test1").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[6].image;
+                 }
+             if (document.getElementById("test2").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[7].image;
+                 }
+             if (document.getElementById("test3").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[8].image;
+                 }
+                   
+               }
+             
+             
+             if(document.getElementById("demo").innerHTML == questions[3][0])
+                 
+               {
+               
+                   if (document.getElementById("test1").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[9].image;
+                 }
+             if (document.getElementById("test2").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[10].image;
+                 }
+             if (document.getElementById("test3").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[11].image;
+                 }
+                   
+               }
+             
+             
+             if(document.getElementById("demo").innerHTML == questions[4][0])
+                 
+               {
+               
+                   if (document.getElementById("test1").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[12].image;
+                 }
+             if (document.getElementById("test2").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[13].image;
+                 }
+             if (document.getElementById("test3").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[14].image;
+                 }
+                   
+               }
+             
+             
+             if(document.getElementById("demo").innerHTML == questions[5][0])
+                 
+               {
+               
+                   if (document.getElementById("test1").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[15].image;
+                 }
+             if (document.getElementById("test2").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[16].image;
+                 }
+             if (document.getElementById("test3").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[17].image;
+                 }
+                   
+               }
+             
+             
+             if(document.getElementById("demo").innerHTML == questions[6][0])
+                 
+               {
+               
+                   if (document.getElementById("test1").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[18].image;
+                 }
+             if (document.getElementById("test2").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[19].image;
+                 }
+             if (document.getElementById("test3").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[20].image;
+                 }
+                   
+               }
+             
+             
+             if(document.getElementById("demo").innerHTML == questions[7][0])
+                 
+               {
+               
+                   if (document.getElementById("test1").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[21].image;
+                 }
+             if (document.getElementById("test2").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[22].image;
+                 }
+             if (document.getElementById("test3").checked==true)
+                 {
+                      document.getElementById('gif').src = qArray[23].image;
+                 }
+                   
+               }
+             
+             
+             
+         }
+         
+         $(document).ready(function(){
+         // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+         
+         $('#ansForm').validate({ // initialize the plugin
+           rules: {
+               field1: {
+                   required: true
+                   
+               }
+           }
+         });
+               
+     
+         });
+         
+         
+      </script>
+    
+    <script type="text/javascript">
+var _onload = window.onload || function()
+{
+  document.getElementById('rollSubmit').disabled = false;
+  document.getElementById('cardSubmit').disabled = false;
+  document.getElementById('logout').disabled = false;
+}
+
+_onload();
+</script>
+    
+    <script>
+    $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+       
+    </script>
+    
+    <script language="javascript">
+document.onmousedown=disableclick;
+status="Do not try to check the Source Code";
+function disableclick(event)
+{
+  if(event.button==2)
+   {
+    sourceCodeCount++   
+    if (sourceCodeCount == 3)
+        {
+          Materialize.toast('I told you not to check the source code', 4000)
+          return false;
+        }
+       
+       if (sourceCodeCount == 4)
+        {
+          Materialize.toast('You still want the source code?', 4000)
+          return false;
+        }
+       
+       if (sourceCodeCount == 5)
+        {
+          Materialize.toast('You will not get the source code', 4000)
+          return false;
+        }
+       if (sourceCodeCount == 6)
+        {
+          Materialize.toast('Keep trying', 4000)
+          return false;
+        }
+       
+       if (sourceCodeCount == 9)
+        {
+          Materialize.toast('Seriously?', 4000)
+          return false;
+        }
+       
+       if (sourceCodeCount == 10)
+        {
+          Materialize.toast('Still trying?', 4000)
+          return false;
+        }
+                            
+        if (sourceCodeCount == 11)
+        {
+          Materialize.toast('It is just a source code not Google Search Algorithm', 4000)
+          return false;
+        }
+       
+       
+       else
+       {
+          Materialize.toast(status, 4000)
+          return false;
+       }
+     
+         
+   }
+}
+</script>
+    
+   </body>
+</html>

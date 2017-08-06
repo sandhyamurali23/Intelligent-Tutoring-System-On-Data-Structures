@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+      <meta name="google-signin-client_id" content="354878502081-1elktl6mad9hslilelr8h3rjdmcn3v98.apps.googleusercontent.com">
+    <title>Starter Template - Materialize</title>
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <script src="libs/jquery-loader.js"></script>
+    <!-- Load local QUnit -->
+    <link rel="stylesheet" href="libs/qunit/qunit/qunit.css" media="screen">
+    <script src="libs/qunit/qunit/qunit.js"></script>
+    <!-- Load local lib and tests -->
+    <link rel="stylesheet" href="src/remodal.css">
+    <link rel="stylesheet" href="src/remodal-default-theme.css">
+    <script src="src/remodal.js"></script>
+    <script src="remodal_test.js"></script>
+    <script src="//www.parsecdn.com/js/parse-1.6.7.min.js"></script>  
+    <script>Parse.initialize("1OafvqCOdXbhImCWLtLzi7oEWfhjQaiTkpbiAUlJ", "9TJungoyNdtFYBbF83p6884YgnXoQah3Y8z8QJw</script> 
+      
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+      
+    <style>
+      .remodal-overlay.without-animation.remodal-is-opening,
+      .remodal-overlay.without-animation.remodal-is-closing,
+      .remodal.without-animation.remodal-is-opening,
+      .remodal.without-animation.remodal-is-closing,
+      .remodal-bg.without-animation.remodal-is-opening,
+      .remodal-bg.without-animation.remodal-is-closing {
+      animation: none;
+      }
+    </style>
+  </head>
+  <body>
+      
+    <nav class="light-blue lighten-1" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo">Logo</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#" data-remodal-target="modal">Login</a></li>
+        </ul><ul class="right hide-on-med-and-down">
+          <li><a href="#" data-onsuccess="onSignIn">Google</a></li>
+        </ul>
+        <ul id="nav-mobile" class="side-nav">
+          <li><a href="#">Navbar Link</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
+    <div class="section no-pad-bot" id="index-banner">
+      <div class="container">
+        <div class="remodal" data-remodal-id="modal-signup">
+          <h3 id="modal1Title">Sign Up</h3>
+          <a data-remodal-action="close" class="remodal-close"></a>
+          <div class="row">
+            <form class="col s12" action="#" method="post">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="last_name" type="text" class="validate">
+                  <label for="last_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="last_name" type="text" class="validate">
+                  <label for="last_name">Last Name</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="email" type="email" class="validate">
+                  <label for="email">Email</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="password" type="password" class="validate">
+                  <label for="password">Password</label>
+                </div>
+              </div>
+              <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Submit
+              <i class="material-icons right">send</i>
+              </button>
+              <br><br>
+              <div class="row col s12 input-field">
+                <a href="#" data-remodal-target="modal">Already have an account?Click here to sign in</a> 
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="remodal" data-remodal-id="modal">
+          <a data-remodal-action="close" class="remodal-close"></a>
+          <div>
+            <!--Changes Start Here-->
+            <h3 id="modal1Title">Login</h3>
+            <div class="row">
+              <form class="col s12" action="#" method="post">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="email" type="email" class="validate">
+                    <label for="email">Email</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="password" type="password" class="validate">
+                    <label for="password">Password</label>
+                  </div>
+                </div>
+                <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+                </button>
+                  
+                <br><br>
+                <div class="row col s12 input-field">
+                  <a href="#" data-remodal-target="modal-signup">No Account?Click here to sign up</a> 
+                </div>
+              </form>
+            </div>
+            <!--Changes End Here-->           
+          </div>
+          <!-- <a data-remodal-action="cancel" class="remodal-cancel" href="#">Cancel</a>
+            <a data-remodal-action="confirm" class="remodal-confirm" href="#">OK</a>-->
+        </div>
+        <br><br>
+        <h1 class="header center orange-text">Starter Template</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+        </div>
+        <div class="row center">
+          <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
+        </div>
+        <br><br>
+      </div>
+    </div>
+    <div class="container">
+      <div class="section">
+        <!--   Icon Section   -->
+        <div class="row">
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
+              <h5 class="center">Speeds up development</h5>
+              <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+            </div>
+          </div>
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+              <h5 class="center">User Experience Focused</h5>
+              <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+            </div>
+          </div>
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
+              <h5 class="center">Easy to work with</h5>
+              <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br><br>
+      <div class="section">
+      </div>
+    </div>
+    <footer class="page-footer orange">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Company Bio</h5>
+            <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+          </div>
+          <div class="col l3 s12">
+            <h5 class="white-text">Settings</h5>
+            <ul>
+              <li><a class="white-text" href="#!">Link 1</a></li>
+              <li><a class="white-text" href="#!">Link 2</a></li>
+              <li><a class="white-text" href="#!">Link 3</a></li>
+              <li><a class="white-text" href="#!">Link 4</a></li>
+            </ul>
+          </div>
+          <div class="col l3 s12">
+            <h5 class="white-text">Connect</h5>
+            <ul>
+              <li><a class="white-text" href="#!">Link 1</a></li>
+              <li><a class="white-text" href="#!">Link 2</a></li>
+              <li><a class="white-text" href="#!">Link 3</a></li>
+              <li><a class="white-text" href="#!">Link 4</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+        </div>
+      </div>
+    </footer>
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="bin/materialize.js"></script>
+    <script src="js/init.js"></script>
+      <script>
+    function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'https://www.googleapis.com/auth/plus.login',
+        'width': 200,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
+
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+  </body>
+</html>

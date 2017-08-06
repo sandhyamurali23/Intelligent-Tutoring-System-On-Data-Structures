@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html oncontextmenu="return false"  onselectstart='return false;'>
+   <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/css/materialize.min.css"  media="screen,projection"/>
+       <title>ITS</title>
+      <!-- CORE CSS-->
+      <link href="css/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+      <link href="css/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+      <!-- Custome CSS-->    
+      <link href="css/css/custom-style.css" type="text/css" rel="stylesheet" media="screen,projection">
+      <link href="css/css/page-center.css" type="text/css" rel="stylesheet" media="screen,projection">
+      <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+      <link href="css/css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
+      <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+      <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+      <script src="js/sweetalert.min.js"></script> 
+      <link rel="stylesheet" type="text/css" href="css/css/sweetalert.css">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   </head>
+   <style>
+      body {
+      background-image: url("images/pattern_s.png");
+      background-repeat: repeat;
+      }
+   </style>
+    
+   <body>
+    
+       
+       
+  <!-- End Page Loading -->
+  <div id="login-page" class="row" name="login-page">
+      
+       <noscript><style>#no-js{background:red; height: 38px; width: 305px; color:white; font-size: 11.5pt; text-align: center; font-family: 'Roboto', sans-serif; vertical-align: middle;line-height: 28pt}</style><div id="no-js">Please enable JavaScript in your browser</div></noscript>
+      
+    <div class="col s12 z-depth-4 card-panel">
+         
+      <form class="login-form" name="login-form" role="form">
+        <div class="row">
+          <div class="input-field col s12 center">
+            <img src="images/login-logo.png" alt="" class="circle responsive-img valign profile-image-login">
+            <p class="center login-form-text">ITS Dashboard</p>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            
+            <input id="username" type="text" name="username" required>
+            <label for="username" class="center-align">Username</label>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            
+            <input id="password" type="password" name="password" required>
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">          
+          <div class="input-field col s12 m12 l12  login-text">
+              <input type="checkbox" id="remember-me" />
+              <label for="remember-me">Remember me</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <button id="submit" type="submit" name="action" class="btn waves-effect waves-light col blue s12" disabled>Login</button>
+          </div>
+        </div>
+        
+
+      </form>
+    </div>
+  </div>
+
+       
+       
+      <script type="text/javascript">
+         Parse.initialize("1OafvqCOdXbhImCWLtLzi7oEWfhjQaiTkpbiAUlJ", "9TJungoyNdtFYBbF83p6884YgnXoQah3Y8z8QJwB");
+      </script>
+       
+       
+       
+      <script>
+         $('.login-form').on('submit', function(e) {
+         
+         // Prevent Default Submit Event
+         e.preventDefault();
+         
+         // Get data from the form and put them into variables
+         var data = $(this).serializeArray(),
+           username = data[0].value,
+           password = data[1].value;
+         
+         // Call Parse Login function with those variables
+         Parse.User.logIn(username, password, {
+           // If the username and password matches
+           success: function(user) {
+               window.location = "quiz1.html?#";
+           },
+           // If there is an error
+           error: function(user, error) {
+               swal({   title: "Error!",   text: "Invalid Username/Password combination",   type: "error",   confirmButtonText: "Cool" });
+           }
+         });
+         
+         });
+               
+           
+           
+      </script>
+       
+         <script>
+    
+    $(document).ready(function(){
+
+    /* Get browser */
+    $.browser.chrome = /chrome/.test(navigator.userAgent.toLowerCase());
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+
+    /* Detect Chrome */
+    if($.browser.chrome){
+        /* Do something for Chrome at this point */
+        
+        
+        /* Finally, if it is Chrome then jQuery thinks it's 
+           Safari so we have to tell it isn't */
+        $.browser.safari = false;
+    }
+
+    /* Detect Safari */
+    if($.browser.safari){
+        /* Do something for Safari */
+        swal("Error", "Please open this site on Chrome for a better experience");
+    }
+        
+        if(msie > 0)
+            {
+                swal("Error", "Please open this site on Chrome for a better experience");
+            }
+
+});
+        
+    </script>
+       
+       <script type="text/javascript">
+var _onload = window.onload || function()
+{
+  document.getElementById('submit').disabled = false;
+}
+
+_onload();
+</script>
+       
+        <script language="javascript">
+document.onmousedown=disableclick;
+status="Do not try to check the Source Code";
+function disableclick(event)
+{
+  if(event.button==2)
+   {
+    sourceCodeCount++   
+    if (sourceCodeCount == 3)
+        {
+          Materialize.toast('I told you not to check the source code', 4000)
+          return false;
+        }
+       
+       if (sourceCodeCount == 4)
+        {
+          Materialize.toast('You still want the source code?', 4000)
+          return false;
+        }
+       
+       if (sourceCodeCount == 5)
+        {
+          Materialize.toast('You will not get the source code', 4000)
+          return false;
+        }
+       if (sourceCodeCount == 6)
+        {
+          Materialize.toast('Keep trying', 4000)
+          return false;
+        }
+       
+       if (sourceCodeCount == 9)
+        {
+          Materialize.toast('Seriously?', 4000)
+          return false;
+        }
+       
+       if (sourceCodeCount == 10)
+        {
+          Materialize.toast('Still trying?', 4000)
+          return false;
+        }
+                            
+        if (sourceCodeCount == 11)
+        {
+          Materialize.toast('It is just a source code not Google Search Algorithm', 4000)
+          return false;
+        }
+       
+       
+       else
+       {
+          Materialize.toast(status, 4000)
+          return false;
+       }
+     
+         
+   }
+}
+</script>
+       
+      <!-- jQuery Library -->
+  <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+  <!--materialize js-->
+  <script type="text/javascript" src="js/materialize.js"></script>
+  <!--prism-->
+  <script type="text/javascript" src="js/prism.js"></script>
+  <!--scrollbar-->
+  <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+  <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+  <script type="text/javascript" src="js/plugins.js"></script>
+   </body>
+</html>
